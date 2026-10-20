@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Linux Dynamic Island
+GenericName=Dynamic Island Overlay
+Comment=Interactive dynamic island widget for Linux desktops
+Exec=linux-dynamic-island
+Icon=linux-dynamic-island
+Terminal=false
+Categories=Utility;DesktopSettings;
+StartupNotify=false
+X-GNOME-Autostart-enabled=true

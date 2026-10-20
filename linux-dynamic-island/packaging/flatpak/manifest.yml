@@ -1,0 +1,27 @@
+app-id: org.linuxdynamicisland.LinuxDynamicIsland
+runtime: org.gnome.Platform
+runtime-version: '46'
+sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+command: linux-dynamic-island
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+  - --talk-name=org.freedesktop.Notifications
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin
+  env:
+    CARGO_HOME: /run/build/linux-dynamic-island/cargo
+modules:
+  - name: linux-dynamic-island
+    buildsystem: simple
+    build-commands:
+      - cargo --offline fetch --manifest-path Cargo.toml
+      - cargo --offline build --release --verbose
+      - install -Dm755 target/release/linux-dynamic-island /app/bin/linux-dynamic-island
+    sources:
+      - type: dir
+        path: ../../
